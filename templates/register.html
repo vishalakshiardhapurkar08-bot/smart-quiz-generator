@@ -1,0 +1,4 @@
+<!doctype html><html><head><title>Register</title><link rel="stylesheet" href="/static/css/style.css"></head>
+<body><div class="card auth"><h2>📝 Create Account</h2>{% with messages=get_flashed_messages(with_categories=true) %}{% for c,m in messages %}<div class="msg {{c}}">{{m}}</div>{% endfor %}{% endwith %}
+<form method="post"><input name="name" placeholder="Full Name" required><input name="email" type="email" placeholder="Email" required><input name="password" type="password" placeholder="Password" required><button>Register</button></form>
+<p>Already registered? <a href="/login">Login</a></p></div></body></html>

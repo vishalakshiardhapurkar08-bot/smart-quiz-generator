@@ -1,0 +1,3 @@
+<!doctype html><html><head><title>Result</title><link rel="stylesheet" href="/static/css/style.css"></head>
+<body><nav><b>🧠 Smart Quiz</b><a href="/dashboard">Dashboard</a></nav><div class="container"><div class="card center"><h1>🎉 Quiz Result</h1><div class="score">{{score}} / {{total}}</div><p>You scored {{ (score * 100 / total)|round(0) if total else 0 }}%</p><a class="btn" href="/dashboard">Back to Dashboard</a></div>
+{% for q,selected,correct in review %}<div class="card"><b>Q{{loop.index}}. {{q.question}}</b><p>Your answer: {{selected or 'Not answered'}} — {% if correct %}✅ Correct{% else %}❌ Incorrect (Correct: {{q.answer}}){% endif %}</p></div>{% endfor %}</div></body></html>

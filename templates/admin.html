@@ -1,0 +1,11 @@
+<!doctype html><html><head><title>Admin</title><link rel="stylesheet" href="/static/css/style.css"></head>
+<body><nav><b>⚙️ Admin Panel</b><span><a href="/dashboard">Dashboard</a> | <a href="/logout">Logout</a></span></nav>
+<div class="container"><h1>Question Management</h1>{% with messages=get_flashed_messages(with_categories=true) %}{% for c,m in messages %}<div class="msg {{c}}">{{m}}</div>{% endfor %}{% endwith %}
+<div class="card"><h2>Add Question</h2><form method="post" action="/admin/add"><div class="grid">
+<input name="subject" placeholder="Subject" required><input name="topic" placeholder="Topic" required>
+<input name="question" placeholder="Question" required><input name="option_a" placeholder="Option A" required>
+<input name="option_b" placeholder="Option B" required><input name="option_c" placeholder="Option C" required><input name="option_d" placeholder="Option D" required>
+<select name="answer"><option value="A">Correct: A</option><option value="B">Correct: B</option><option value="C">Correct: C</option><option value="D">Correct: D</option></select>
+<select name="difficulty"><option>Easy</option><option>Medium</option><option>Hard</option></select></div><button>Add Question</button></form></div>
+<div class="card"><h2>Questions</h2><table><tr><th>ID</th><th>Subject</th><th>Question</th><th>Answer</th><th>Action</th></tr>{% for q in questions %}<tr><td>{{q.id}}</td><td>{{q.subject}}</td><td>{{q.question}}</td><td>{{q.answer}}</td><td><a href="/admin/delete/{{q.id}}" onclick="return confirm('Delete this question?')">Delete</a></td></tr>{% endfor %}</table></div>
+</div></body></html>
